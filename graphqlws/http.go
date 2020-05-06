@@ -5,7 +5,7 @@ import (
 
 	"github.com/gorilla/websocket"
 
-	"github.com/graph-gophers/graphql-transport-ws/graphqlws/internal/connection"
+	"github.com/rawagner/graphql-transport-ws/graphqlws/internal/connection"
 )
 
 const protocolGraphQLWS = "graphql-ws"
@@ -30,7 +30,7 @@ func NewHandlerFunc(svc connection.GraphQLService, httpHandler http.Handler) htt
 					return
 				}
 
-				go connection.Connect(ws, svc)
+				go connection.Connect(r.Context(), ws, svc)
 				return
 			}
 		}
